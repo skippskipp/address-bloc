@@ -51,7 +51,10 @@ RSpec.describe AddressBook do
       book = AddressBook.new
       book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
       book.add_entry('James Lovelace', '011.012.1815', 'james.king@lovelace.com')
-      book.remove_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+      old_entry = book.entries[0]
+      book.remove_entry(old_entry.name, old_entry.phone_number, old_entry.email)
+      #I'd like to be able to pass `remove_entry` a single parameter that gets parsed..
+      #book.remove_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
       expect(book.entries.size).to eq(1)
       new_entry = book.entries[0]
 
