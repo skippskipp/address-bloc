@@ -9,6 +9,7 @@ class MenuController
 
   def main_menu
     puts "Main Menu - #{address_book.entries.count} entries"
+    puts "0 - View Entry By Number"
     puts "1 - View all entries"
     puts "2 - Create an entry"
     puts "3 - Search for an entry"
@@ -18,6 +19,10 @@ class MenuController
     selection = gets.to_i
 
     case selection
+      when 0
+        system "clear"
+        view_entry_by
+        main_menu
       when 1
         system "clear"
         view_all_entries
@@ -41,6 +46,17 @@ class MenuController
         system "clear"
         puts "Sorry, that is not a valid input"
         main_menu
+      end
+    end
+
+    def view_entry_by
+      system "clear"
+      puts "Please enter the number of the entry you would like to see: "
+      selection = gets.to_i
+      if address_book.entries.length > 1 && selection <= address_book.entries.length && selection != 0
+        puts address_book.entries[selection - 1]
+      else
+        puts "Not a valid entry number in this address book."
       end
     end
 
