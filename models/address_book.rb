@@ -63,7 +63,11 @@ class AddressBook
       end
     end
 
-    return nil 
+    return nil
+  end
+
+  def trump_this
+    @entries.clear
   end
 
 end

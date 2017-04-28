@@ -180,6 +180,14 @@ RSpec.describe AddressBook do
     end
   end
 
+  describe "#trump_this" do
+    it "should clear the database" do
+      book.import_from_csv("entries.csv")
+      book.trump_this
+      expect(book.entries.size).to eq 0
+    end
+  end
+
   describe "#iterative_search" do
     it "searches AddressBook for a non-existent entry" do
       book.import_from_csv("entries.csv")
